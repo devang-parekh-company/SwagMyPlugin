@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace SwagMyPlugin\Subscriber;
+namespace SwagPluginTest\Subscriber;
 
 use Shopware\Core\Framework\DataAbstractionLayer\Event\EntityLoadedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

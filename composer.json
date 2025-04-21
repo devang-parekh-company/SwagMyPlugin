@@ -1,6 +1,6 @@
 {
-    "name": "swag-my-plugin/swag-my-plugin",
-    "description": "swag-my-plugin/swag-my-plugin",
+    "name": "swag-plugin-test/swag-plugin-test",
+    "description": "swag-plugin-test/swag-plugin-test",
     "type": "shopware-platform-plugin",
     "version": "1.0.0",
     "license": "MIT",
@@ -8,7 +8,7 @@
         "shopware/core": "~6.6.0"
     },
     "extra": {
-        "shopware-plugin-class": "SwagMyPlugin\\SwagMyPlugin",
+        "shopware-plugin-class": "SwagPluginTest\\SwagPluginTest",
         "label": {
             "de-DE": "Skeleton plugin",
             "en-GB": "Skeleton plugin"
@@ -16,12 +16,12 @@
     },
     "autoload": {
         "psr-4": {
-            "SwagMyPlugin\\": "src/"
+            "SwagPluginTest\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "SwagMyPlugin\\Tests\\": "tests/"
+            "SwagPluginTest\\Tests\\": "tests/"
         }
     }
 }

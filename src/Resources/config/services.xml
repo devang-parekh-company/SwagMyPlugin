@@ -6,18 +6,8 @@
 
     <services>
 
-        <service id="SwagMyPlugin\Subscriber\MySubscriber">
+        <service id="SwagPluginTest\Subscriber\MySubscriber">
             <tag name="kernel.event_subscriber"/>
-        </service>
-
-        <service id="SwagMyPlugin\Storefront\Controller\ExampleController" public="true">
-            <call method="setContainer">
-                <argument type="service" id="service_container"/>
-            </call>
-        </service>
-
-        <service id="SwagMyPlugin\Core\Content\Example\SalesChannel\ExampleRoute">
-            <argument type="service" id="product.repository"/>
         </service>
 
     </services>
