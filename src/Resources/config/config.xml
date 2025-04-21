@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Basic Information</title>
+        <input-field type="text">
+            <name>Name</name>
+            <label>Plugin Name:</label>
+        </input-field>
+        <input-field type="textarea">
+            <name>ShortDescription</name>
+            <label>Plugin Short Description:</label>
+            <placeholder>describe the plugin in shortly...</placeholder>
+        </input-field>
+        <input-field type="text-editor">
+            <name>FullDescription</name>
+            <label>Plugin Full Description:</label>
+            <placeholder>describe the plugin description in detail...</placeholder>
+        </input-field>
+
+        <input-field type="url">
+            <name>PluginUrl</name>
+            <label>Plugin Url:</label>
+            <placeholder>Enter plugin url here</placeholder>
+        </input-field>
+
+        <input-field type="date">
+            <name>Date</name>
+            <label>Plugin Date:</label>
+        </input-field>
+
+        <input-field type="time">
+            <name>Time</name>
+            <label>Plugin Time:</label>
+        </input-field>
+
+        <input-field type="datetime">
+            <name>DateTime</name>
+            <label>Plugin Date-time:</label>
+        </input-field>
+        <input-field type="single-select">
+            <name>language</name>
+            <label>Plugin Language:</label>
+            <options>
+                <option>
+                    <id>en</id>
+                    <name>English</name>
+                </option>
+                <option>
+                    <id>de</id>
+                    <name>German</name>
+                </option>
+            </options>
+        </input-field>
+        <input-field type="multi-select">
+            <name>currency</name>
+            <label>Plugin currency:</label>
+            <options>
+                <option>
+                    <id>USD</id>
+                    <name>USD</name>
+                </option>
+                <option>
+                    <id>EUR</id>
+                    <name>EUR</name>
+                </option>
+                <option>
+                    <id>INR</id>
+                    <name>INR</name>
+                </option>
+            </options>
+        </input-field>
+    </card>
+    <card>
+        <title>Plugin Confurations</title>
+        <input-field type="text">
+            <name>AccountName</name>
+            <label>Account Name:</label>
+            <placeholder>Enter plugin account name</placeholder>
+        </input-field>
+        <input-field type="password">
+            <name>AccountPassword</name>
+            <label>Account Password:</label>
+        </input-field>
+        <input-field type="int">
+            <name>Priority</name>
+            <label>Priority</label>
+            <defaultValue>0</defaultValue>
+        </input-field>
+        <input-field type="bool">
+            <name>Active</name>
+            <label>Active:</label>
+        </input-field>
+        <input-field type="bool">
+            <name>Administrator</name>
+            <label>Administrator:</label>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Theme Confurations</title>
+        <input-field type="checkbox">
+            <name>AllowedTheamChange</name>
+            <label>Allowed Theme change:</label>
+        </input-field>
+
+        <input-field type="bool">
+            <name>DarkMode</name>
+            <label>Dark Mode:</label>
+        </input-field>
+        <input-field type="colorpicker">
+            <name>ThemeBackGroundColor</name>
+            <label>Back-ground Color:</label>
+        </input-field>
+        <input-field type="colorpicker">
+            <name>ThemeTextColor</name>
+            <label>Text Color:</label>
+        </input-field>
+    </card>
+
+</config>
