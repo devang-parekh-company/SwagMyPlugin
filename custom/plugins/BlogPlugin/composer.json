@@ -1,0 +1,27 @@
+{
+    "name": "blog-plugin/blog-plugin",
+    "description": "blog-plugin/blog-plugin",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.0",
+    "license": "MIT",
+    "require": {
+        "shopware/core": "~6.6.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "BlogPlugin\\BlogPlugin",
+        "label": {
+            "de-DE": "Skeleton plugin",
+            "en-GB": "Skeleton plugin"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "BlogPlugin\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BlogPlugin\\Tests\\": "tests/"
+        }
+    }
+}

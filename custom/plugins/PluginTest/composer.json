@@ -1,0 +1,39 @@
+{
+  "name": "plugin-test/plugin-test",
+  "description": "A Shopware 6 plugin that provides additional functionality",
+  "type": "shopware-platform-plugin",
+  "version": "1.0.0",
+  "license": "MIT",
+  "require": {
+    "shopware/core": "~6.6.0"
+  },
+  "extra": {
+    "shopware-plugin-class": "PluginTest\\PluginTest",
+    "label": {
+      "de-DE": "Plugin Test",
+      "en-GB": "Plugin Test"
+    },
+    "description": {
+      "de-DE": "Ein Plugin für zusätzliche Funktionalität",
+      "en-GB": "A plugin for additional functionality"
+    },
+    "manufacturerLink": {
+      "de-DE": "https://www.icreativetechnologies.com",
+      "en-GB": "https://www.icreativetechnologies.com"
+    },
+    "supportLink": {
+      "de-DE": "https://www.support.icreativetechnologies.com",
+      "en-GB": "https://www.support.icreativetechnologies.com"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "PluginTest\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "PluginTest\\Tests\\": "tests/"
+    }
+  }
+}
