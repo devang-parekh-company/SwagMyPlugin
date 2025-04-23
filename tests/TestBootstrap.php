@@ -4,9 +4,9 @@ use Shopware\Core\TestBootstrapper;
 
 $loader = (new TestBootstrapper())
     ->addCallingPlugin()
-    ->addActivePlugins('SwagPluginTest')
+    ->addActivePlugins('PluginTest')
     ->setForceInstallPlugins(true)
     ->bootstrap()
     ->getClassLoader();
 
-$loader->addPsr4('SwagPluginTest\\Tests\\', __DIR__);
+$loader->addPsr4('PluginTest\\Tests\\', __DIR__);

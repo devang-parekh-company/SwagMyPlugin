@@ -16,7 +16,7 @@
         <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak"/>
     </php>
     <testsuites>
-        <testsuite name="SwagPluginTest Testsuite">
+        <testsuite name="PluginTest Testsuite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

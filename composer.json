@@ -1,27 +1,39 @@
 {
-    "name": "swag-plugin-test/swag-plugin-test",
-    "description": "swag-plugin-test/swag-plugin-test",
-    "type": "shopware-platform-plugin",
-    "version": "1.0.0",
-    "license": "MIT",
-    "require": {
-        "shopware/core": "~6.6.0"
+  "name": "plugin-test/plugin-test",
+  "description": "A Shopware 6 plugin that provides additional functionality",
+  "type": "shopware-platform-plugin",
+  "version": "1.0.0",
+  "license": "MIT",
+  "require": {
+    "shopware/core": "~6.6.0"
+  },
+  "extra": {
+    "shopware-plugin-class": "PluginTest\\PluginTest",
+    "label": {
+      "de-DE": "Plugin Test",
+      "en-GB": "Plugin Test"
     },
-    "extra": {
-        "shopware-plugin-class": "SwagPluginTest\\SwagPluginTest",
-        "label": {
-            "de-DE": "Skeleton plugin",
-            "en-GB": "Skeleton plugin"
-        }
+    "description": {
+      "de-DE": "Ein Plugin für zusätzliche Funktionalität",
+      "en-GB": "A plugin for additional functionality"
     },
-    "autoload": {
-        "psr-4": {
-            "SwagPluginTest\\": "src/"
-        }
+    "manufacturerLink": {
+      "de-DE": "https://www.icreativetechnologies.com",
+      "en-GB": "https://www.icreativetechnologies.com"
     },
-    "autoload-dev": {
-        "psr-4": {
-            "SwagPluginTest\\Tests\\": "tests/"
-        }
+    "supportLink": {
+      "de-DE": "https://www.support.icreativetechnologies.com",
+      "en-GB": "https://www.support.icreativetechnologies.com"
     }
+  },
+  "autoload": {
+    "psr-4": {
+      "PluginTest\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "PluginTest\\Tests\\": "tests/"
+    }
+  }
 }
