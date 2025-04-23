@@ -1,6 +1,10 @@
 <?php declare(strict_types=1);
 
+<<<<<<< Updated upstream
 namespace SwagPluginTest\Subscriber;
+=======
+namespace PluginTest\Subscriber;
+>>>>>>> Stashed changes
 
 use Shopware\Core\Framework\DataAbstractionLayer\Event\EntityLoadedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;

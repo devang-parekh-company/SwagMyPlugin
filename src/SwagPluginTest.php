@@ -1,6 +1,10 @@
 <?php declare(strict_types=1);
 
+<<<<<<< Updated upstream:src/SwagPluginTest.php
 namespace SwagPluginTest;
+=======
+namespace PluginTest;
+>>>>>>> Stashed changes:src/SwagMyPlugin.php
 
 use Shopware\Core\Framework\Plugin;
 use Shopware\Core\Framework\Plugin\Context\ActivateContext;
@@ -9,7 +13,11 @@ use Shopware\Core\Framework\Plugin\Context\InstallContext;
 use Shopware\Core\Framework\Plugin\Context\UninstallContext;
 use Shopware\Core\Framework\Plugin\Context\UpdateContext;
 
+<<<<<<< Updated upstream:src/SwagPluginTest.php
 class SwagPluginTest extends Plugin
+=======
+class PluginTest extends Plugin
+>>>>>>> Stashed changes:src/SwagMyPlugin.php
 {
     public function install(InstallContext $installContext): void
     {

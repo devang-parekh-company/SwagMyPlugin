@@ -5,6 +5,7 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+<<<<<<< Updated upstream
         <service id="PluginTest\Core\Content\PluginTest\PluginTestDefinition">
             <tag name="shopware.entity.definition" entity="plugin_test"></tag>
         </service>
@@ -26,6 +27,21 @@
         </service>
         <service id="PluginTest\Core\Content\Extension\MediaExtension">
             <tag name="shopware.entity.extension"></tag>
+=======
+
+        <service id="PluginTest\Subscriber\MySubscriber">
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="PluginTest\Storefront\Controller\ExampleController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="PluginTest\Core\Content\Example\SalesChannel\ExampleRoute">
+            <argument type="service" id="product.repository"/>
+>>>>>>> Stashed changes
         </service>
     </services>
 </container>

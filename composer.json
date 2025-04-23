@@ -13,6 +13,7 @@
       "de-DE": "Plugin Test",
       "en-GB": "Plugin Test"
     },
+<<<<<<< Updated upstream
     "description": {
       "de-DE": "Ein Plugin für zusätzliche Funktionalität",
       "en-GB": "A plugin for additional functionality"
@@ -24,6 +25,24 @@
     "supportLink": {
       "de-DE": "https://www.support.icreativetechnologies.com",
       "en-GB": "https://www.support.icreativetechnologies.com"
+=======
+    "extra": {
+        "shopware-plugin-class": "PluginTest\\PluginTest",
+        "label": {
+            "de-DE": "Skeleton plugin",
+            "en-GB": "Skeleton plugin"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "PluginTest\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PluginTest\\Tests\\": "tests/"
+        }
+>>>>>>> Stashed changes
     }
   },
   "autoload": {
