@@ -10,7 +10,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\FkField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToOneAssociationField;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 
 class BlogMappingDefinition extends  EntityDefinition
@@ -26,6 +26,10 @@ class BlogMappingDefinition extends  EntityDefinition
         return new FieldCollection([
             (new FkField('blog_plugin_blog_id', 'blogPluginBlogId', BlogDefinition::class))->addFlags(new Required(), new PrimaryKey()),
             (new FkField('blog_plugin_blog_category_id', 'blogPluginBlogCategoryId', BlogCategoryDefinition::class))->addFlags(new Required(), new PrimaryKey()),
+            
+            new ManyToOneAssociationField('blogPluginBlog', 'blog_plugin_blog_id', BlogDefinition::class),
+            new ManyToOneAssociationField('blogPluginBlogCategory', 'blog_plugin_blog_category_id', BlogCategoryDefinition::class),
         ]);
     }
 }
+

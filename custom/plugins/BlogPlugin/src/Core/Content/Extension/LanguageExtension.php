@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace PluginTest\Core\Content\Extension;
+namespace BlogPlugin\Core\Content\Extension;
 
-use PluginTest\Core\Content\PluginTest\Aggregate\PluginTestTranslationDefinition;
+use BlogPlugin\Core\Content\BlogPlugin\Blog\Aggregate\BlogTranslationDefinition;
+use BlogPlugin\Core\Content\BlogPlugin\BlogCategory\Aggregate\BlogCategoryTranslationDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityExtension;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
@@ -15,7 +16,10 @@ class LanguageExtension extends EntityExtension
     public function extendFields(FieldCollection $fieldCollection): void
     {
         $fieldCollection->add(
-            new OneToManyAssociationField('PluginTestTranslationId', PluginTestTranslationDefinition::class, 'plugin_test_id'),
+            new OneToManyAssociationField('BlogPluginBlogTranslationId', BlogTranslationDefinition::class, 'blog_plugin_blog_id'),
+        );
+        $fieldCollection->add(
+            new OneToManyAssociationField('BlogPluginBlogCategoryTranslationId', BlogCategoryTranslationDefinition::class, 'blog_plugin_blog_category_id'),
         );
     }
     public function getDefinitionClass(): string
