@@ -1,6 +1,6 @@
 {
     "name": "blog-plugin/blog-plugin",
-    "description": "blog-plugin/blog-plugin",
+    "description": "A Shopware 6 plugin that provides blog and blog-category functionality",
     "type": "shopware-platform-plugin",
     "version": "1.0.0",
     "license": "MIT",
@@ -10,8 +10,20 @@
     "extra": {
         "shopware-plugin-class": "BlogPlugin\\BlogPlugin",
         "label": {
-            "de-DE": "Skeleton plugin",
-            "en-GB": "Skeleton plugin"
+            "de-DE": "Blog Plugin",
+            "en-GB": "Blog Plugin"
+        },
+        "description": {
+            "de-DE": "Ein Plugin für zusätzliche Funktionalität",
+            "en-GB": "A plugin for additional functionality"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://www.icreativetechnologies.com",
+            "en-GB": "https://www.icreativetechnologies.com"
+        },
+        "supportLink": {
+            "de-DE": "https://www.support.icreativetechnologies.com",
+            "en-GB": "https://www.support.icreativetechnologies.com"
         }
     },
     "autoload": {
