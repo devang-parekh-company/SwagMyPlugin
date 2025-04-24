@@ -6,6 +6,8 @@ namespace BlogPlugin\Core\Content\BlogPlugin\Blog;
 
 use BlogPlugin\Core\Content\BlogPlugin\BlogCategory\BlogCategoryDefinition;
 use BlogPlugin\Core\Content\BlogPlugin\BlogMapping\BlogMappingDefinition;
+use BlogPlugin\Core\Content\BlogPlugin\ProductMapping\BlogProductMappingDefinition;
+use Shopware\Core\Content\Product\ProductDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\BoolField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\DateField;
@@ -32,10 +34,20 @@ class BlogDefinition extends EntityDefinition
     {
         return new FieldCollection([
             (new IdField('id', 'id'))->addFlags(new Required(), new PrimaryKey()),
-            new StringField('title', 'title'),
+            new StringField('name', 'name'),
             new StringField('description', 'description'),
+            new StringField('author', 'author'),
             new DateField('release_date', 'releaseDate'),
             new BoolField('active', 'active'),
+
+            new ManyToManyAssociationField(
+                'blog_plugin_blog_mapping_products',
+                ProductDefinition::class,
+                BlogProductMappingDefinition::class,
+                'blog_plugin_blog_id',
+                "product_id",
+            ),
+
             new ManyToManyAssociationField(
                 'blog_plugin_blog_categories',
                 BlogCategoryDefinition::class,

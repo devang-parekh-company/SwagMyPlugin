@@ -14,5 +14,12 @@
         <service id="BlogPlugin\Core\Content\BlogPlugin\BlogCategory\BlogCategoryDefinition">
             <tag name="shopware.entity.definition" entity="blog_plugin_blog_categories"></tag>
         </service>
+        <service id="BlogPlugin\Core\Content\BlogPlugin\ProductMapping\BlogProductMappingDefinition">
+            <tag name="shopware.entity.definition" entity="blog_plugin_blog_mapping_products"></tag>
+        </service>
+
+        <service id="BlogPlugin\Core\Content\Extension\ProductExtension">
+            <tag name="shopware.entity.extension"></tag>
+        </service>
     </services>
 </container>
