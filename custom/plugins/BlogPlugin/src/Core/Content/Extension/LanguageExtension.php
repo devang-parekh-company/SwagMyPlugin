@@ -16,10 +16,10 @@ class LanguageExtension extends EntityExtension
     public function extendFields(FieldCollection $fieldCollection): void
     {
         $fieldCollection->add(
-            new OneToManyAssociationField('BlogPluginBlogTranslationId', BlogTranslationDefinition::class, 'blog_plugin_blog_id'),
+            new OneToManyAssociationField('blogTranslations', BlogTranslationDefinition::class, 'blog_id'),
         );
         $fieldCollection->add(
-            new OneToManyAssociationField('BlogPluginBlogCategoryTranslationId', BlogCategoryTranslationDefinition::class, 'blog_plugin_blog_category_id'),
+            new OneToManyAssociationField('blogCateTranslations', BlogCategoryTranslationDefinition::class, 'blog_category_id'),
         );
     }
     public function getDefinitionClass(): string

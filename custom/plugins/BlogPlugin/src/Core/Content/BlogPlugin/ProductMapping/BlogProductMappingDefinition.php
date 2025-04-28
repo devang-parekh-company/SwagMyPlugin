@@ -15,10 +15,11 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationField
 use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToOneAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\ReferenceVersionField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
+use Shopware\Core\Framework\DataAbstractionLayer\MappingEntityDefinition;
 
-class BlogProductMappingDefinition extends  EntityDefinition
+class BlogProductMappingDefinition extends  MappingEntityDefinition
 {
-    const ENTITY_NAME = 'blog_plugin_blog_mapping_products';
+    const ENTITY_NAME = 'blog_mapping_product';
 
     public function getEntityName(): string
     {
@@ -27,12 +28,21 @@ class BlogProductMappingDefinition extends  EntityDefinition
     protected function defineFields(): FieldCollection
     {
         return new FieldCollection([
-            (new FkField('blog_plugin_blog_id', 'blogPluginBlogId', BlogDefinition::class))->addFlags(new Required(), new PrimaryKey()),
-            (new FkField('product_id', 'productId', ProductDefinition::class))->addFlags(new Required(), new PrimaryKey()),
+            (new FkField('blog_id', 'blogId', BlogDefinition::class))->addFlags(new PrimaryKey(), new Required()),
+            (new FkField('product_id', 'productId', ProductDefinition::class))->addFlags(new PrimaryKey(), new Required()),
             (new ReferenceVersionField(ProductDefinition::class, "product_version_id"))->addFlags(new ApiAware(), new Required()),
-
-            new ManyToOneAssociationField('blogPluginBlog', 'blog_plugin_blog_id', BlogDefinition::class),
-            new ManyToOneAssociationField('product', 'product_id', ProductDefinition::class)
+            new ManyToOneAssociationField(
+                'blog',
+                'blog_id',
+                BlogDefinition::class,
+                'id'
+            ),
+            new ManyToOneAssociationField(
+                'product',
+                'product_id',
+                ProductDefinition::class,
+                'id'
+            )
         ]);
     }
 }

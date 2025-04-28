@@ -15,7 +15,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 
 class BlogTranslationDefinition extends  EntityTranslationDefinition
 {
-    const ENTITY_NAME = 'blog_plugin_blog_translation';
+    const ENTITY_NAME = 'blog_translation';
 
     public function getEntityName(): string
     {
@@ -31,8 +31,10 @@ class BlogTranslationDefinition extends  EntityTranslationDefinition
     {
         return new FieldCollection([
             (new IdField('id', 'id'))->addFlags(new PrimaryKey()),
+            (new FkField('blog_id', 'blogId', BlogDefinition::class))->addFlags(new PrimaryKey(), new Required()),
             (new StringField('name', 'name')),
             (new StringField('description', 'description')),
+            (new StringField('author', 'author')),
         ]);
     }
     // public function getEntityClass(): string

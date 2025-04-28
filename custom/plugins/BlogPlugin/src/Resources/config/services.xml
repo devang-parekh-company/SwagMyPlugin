@@ -6,27 +6,27 @@
 
     <services>
         <service id="BlogPlugin\Core\Content\BlogPlugin\Blog\BlogDefinition">
-            <tag name="shopware.entity.definition" entity="blog_plugin_blog"></tag>
+            <tag name="shopware.entity.definition" entity="blog"></tag>
         </service>
 
         <service id="BlogPlugin\Core\Content\BlogPlugin\Blog\Aggregate\BlogTranslationDefinition">
-            <tag name="shopware.entity.definition" entity="blog_plugin_blog_translation"></tag>
+            <tag name="shopware.entity.definition" entity="blog_translation"></tag>
         </service>
 
-        <service id="BlogPlugin\Core\Content\BlogPlugin\BlogMapping\BlogMappingDefinition">
-            <tag name="shopware.entity.definition" entity="blog_plugin_blog_mapping_category"></tag>
+        <service id="BlogPlugin\Core\Content\BlogPlugin\BlogMapping\BlogCategoryMappingDefinition">
+            <tag name="shopware.entity.definition" entity="blog_blog_category"></tag>
         </service>
 
         <service id="BlogPlugin\Core\Content\BlogPlugin\BlogCategory\BlogCategoryDefinition">
-            <tag name="shopware.entity.definition" entity="blog_plugin_blog_categories"></tag>
+            <tag name="shopware.entity.definition" entity="blog_category"></tag>
         </service>
 
         <service id="BlogPlugin\Core\Content\BlogPlugin\BlogCategory\Aggregate\BlogCategoryTranslationDefinition">
-            <tag name="shopware.entity.definition" entity="blog_plugin_blog_category_translation"></tag>
+            <tag name="shopware.entity.definition" entity="blog_category_translation"></tag>
         </service>
 
-        <service id="BlogPlugin\Core\Content\BlogPlugin\ProductMapping\BlogProductMappingDefinition">
-            <tag name="shopware.entity.definition" entity="blog_plugin_blog_mapping_products"></tag>
+    <service id="BlogPlugin\Core\Content\BlogPlugin\ProductMapping\BlogProductMappingDefinition">
+            <tag name="shopware.entity.definition" entity="blog_mapping_product"></tag>
         </service>
 
         <service id="BlogPlugin\Core\Content\Extension\ProductExtension">

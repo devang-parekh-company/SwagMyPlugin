@@ -9,7 +9,6 @@ use BlogPlugin\Core\Content\BlogPlugin\ProductMapping\BlogProductMappingDefiniti
 use Shopware\Core\Content\Product\ProductDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityExtension;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToManyAssociationField;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\OneToManyAssociationField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 
 class ProductExtension extends EntityExtension
@@ -18,18 +17,11 @@ class ProductExtension extends EntityExtension
     {
         $collection->add(
             new ManyToManyAssociationField(
-                'blog_plugin_blogs',
+                'blogs',
                 BlogDefinition::class,
                 BlogProductMappingDefinition::class,
                 'product_id',
-                'blog_plugin_blog_id'
-            )
-        );
-        $collection->add(
-            new OneToManyAssociationField(
-                'blogPluginBlogMappingProducts',
-                BlogProductMappingDefinition::class,
-                'product_id'
+                'blog_id'
             )
         );
     }
