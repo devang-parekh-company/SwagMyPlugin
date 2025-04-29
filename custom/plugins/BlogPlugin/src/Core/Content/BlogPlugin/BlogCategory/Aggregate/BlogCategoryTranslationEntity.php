@@ -12,14 +12,9 @@ class BlogCategoryTranslationEntity extends Entity
     use EntityIdTrait;
 
     /**
-     * @var string|null
-     */
-    protected $id;
-
-    /**
      * @var string
      */
-    protected $blogCategoryId;
+    protected $id;
 
     /**
      * @var string|null
@@ -27,7 +22,7 @@ class BlogCategoryTranslationEntity extends Entity
     protected $name;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      */
     protected $createdAt;
 
@@ -35,6 +30,11 @@ class BlogCategoryTranslationEntity extends Entity
      * @var \DateTimeInterface|null
      */
     protected $updatedAt;
+
+    /**
+     * @var string
+     */
+    protected $blogCategoryId;
 
     /**
      * @var string
@@ -51,24 +51,14 @@ class BlogCategoryTranslationEntity extends Entity
      */
     protected $language;
 
-    public function getId(): ?string
+    public function getId(): string
     {
         return $this->id;
     }
 
-    public function setId(?string $id): void
+    public function setId(string $id): void
     {
         $this->id = $id;
-    }
-
-    public function getBlogCategoryId(): string
-    {
-        return $this->blogCategoryId;
-    }
-
-    public function setBlogCategoryId(string $blogCategoryId): void
-    {
-        $this->blogCategoryId = $blogCategoryId;
     }
 
     public function getName(): ?string
@@ -81,12 +71,12 @@ class BlogCategoryTranslationEntity extends Entity
         $this->name = $name;
     }
 
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): void
+    public function setCreatedAt(?\DateTimeInterface $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -99,6 +89,16 @@ class BlogCategoryTranslationEntity extends Entity
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    public function getBlogCategoryId(): string
+    {
+        return $this->blogCategoryId;
+    }
+
+    public function setBlogCategoryId(string $blogCategoryId): void
+    {
+        $this->blogCategoryId = $blogCategoryId;
     }
 
     public function getLanguageId(): string

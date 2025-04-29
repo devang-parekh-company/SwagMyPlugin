@@ -4,7 +4,7 @@ namespace BlogPlugin\Core\Content\BlogPlugin\Blog\Aggregate;
 
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
-use Shopware\Core\Framework\Struct\ArrayEntity;
+use BlogPlugin\Core\Content\BlogPlugin\Blog\BlogEntity;
 use Shopware\Core\System\Language\LanguageEntity;
 
 class BlogTranslationEntity extends Entity
@@ -12,14 +12,9 @@ class BlogTranslationEntity extends Entity
     use EntityIdTrait;
 
     /**
-     * @var string|null
-     */
-    protected $id;
-
-    /**
      * @var string
      */
-    protected $blogId;
+    protected $id;
 
     /**
      * @var string|null
@@ -37,7 +32,7 @@ class BlogTranslationEntity extends Entity
     protected $author;
 
     /**
-     * @var \DateTimeInterface
+     * @var \DateTimeInterface|null
      */
     protected $createdAt;
 
@@ -49,10 +44,15 @@ class BlogTranslationEntity extends Entity
     /**
      * @var string
      */
+    protected $blogId;
+
+    /**
+     * @var string
+     */
     protected $languageId;
 
     /**
-     * @var ArrayEntity|null
+     * @var BlogEntity|null
      */
     protected $blog;
 
@@ -61,24 +61,14 @@ class BlogTranslationEntity extends Entity
      */
     protected $language;
 
-    public function getId(): ?string
+    public function getId(): string
     {
         return $this->id;
     }
 
-    public function setId(?string $id): void
+    public function setId(string $id): void
     {
         $this->id = $id;
-    }
-
-    public function getBlogId(): string
-    {
-        return $this->blogId;
-    }
-
-    public function setBlogId(string $blogId): void
-    {
-        $this->blogId = $blogId;
     }
 
     public function getName(): ?string
@@ -111,12 +101,12 @@ class BlogTranslationEntity extends Entity
         $this->author = $author;
     }
 
-    public function getCreatedAt(): \DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeInterface $createdAt): void
+    public function setCreatedAt(?\DateTimeInterface $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -131,6 +121,16 @@ class BlogTranslationEntity extends Entity
         $this->updatedAt = $updatedAt;
     }
 
+    public function getBlogId(): string
+    {
+        return $this->blogId;
+    }
+
+    public function setBlogId(string $blogId): void
+    {
+        $this->blogId = $blogId;
+    }
+
     public function getLanguageId(): string
     {
         return $this->languageId;
@@ -141,12 +141,12 @@ class BlogTranslationEntity extends Entity
         $this->languageId = $languageId;
     }
 
-    public function getBlog(): ?ArrayEntity
+    public function getBlog(): ?BlogEntity
     {
         return $this->blog;
     }
 
-    public function setBlog(?ArrayEntity $blog): void
+    public function setBlog(?BlogEntity $blog): void
     {
         $this->blog = $blog;
     }

@@ -28,12 +28,13 @@ class Migration1745903573BlogPluginMigration extends MigrationStep
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
             CREATE TABLE `blog_category_translation` (
-                `blog_category_id` BINARY(16) NOT NULL,
-                `name` VARCHAR(255) NOT NULL,
+                `id` BINARY(16) NOT NULL,
+                `name` VARCHAR(255) NULL,
                 `created_at` DATETIME(3) NOT NULL,
                 `updated_at` DATETIME(3) NULL,
+                `blog_category_id` BINARY(16) NOT NULL,
                 `language_id` BINARY(16) NOT NULL,
-                PRIMARY KEY (`blog_category_id`,`language_id`),
+                PRIMARY KEY (`id`,`blog_category_id`,`language_id`),
                 KEY `fk.blog_category_translation.blog_category_id` (`blog_category_id`),
                 KEY `fk.blog_category_translation.language_id` (`language_id`),
                 CONSTRAINT `fk.blog_category_translation.blog_category_id` FOREIGN KEY (`blog_category_id`) REFERENCES `blog_category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -51,14 +52,14 @@ class Migration1745903573BlogPluginMigration extends MigrationStep
 
             CREATE TABLE `blog_translation` (
                 `id` BINARY(16) NOT NULL,
-                `blog_id` BINARY(16) NOT NULL,
-                `name` VARCHAR(255) NOT NULL,
-                `description` VARCHAR(255) NULL,
+                `name` VARCHAR(255) NULL,
+                `description` LONGTEXT NULL,
                 `author` VARCHAR(255) NULL,
                 `created_at` DATETIME(3) NOT NULL,
                 `updated_at` DATETIME(3) NULL,
+                `blog_id` BINARY(16) NOT NULL,
                 `language_id` BINARY(16) NOT NULL,
-                PRIMARY KEY (`blog_id`,`language_id`),
+                PRIMARY KEY (`id`,`blog_id`,`language_id`),
                 KEY `fk.blog_translation.blog_id` (`blog_id`),
                 KEY `fk.blog_translation.language_id` (`language_id`),
                 CONSTRAINT `fk.blog_translation.blog_id` FOREIGN KEY (`blog_id`) REFERENCES `blog` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,

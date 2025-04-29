@@ -4,7 +4,8 @@ namespace BlogPlugin\Core\Content\BlogPlugin\BlogCategory;
 
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
-use Shopware\Core\Framework\DataAbstractionLayer\EntityCollection;
+use BlogPlugin\Core\Content\BlogPlugin\BlogCategory\Aggregate\BlogCategoryTranslationCollection;
+use BlogPlugin\Core\Content\BlogPlugin\Blog\BlogCollection;
 
 class BlogCategoryEntity extends Entity
 {
@@ -21,12 +22,12 @@ class BlogCategoryEntity extends Entity
     protected $name;
 
     /**
-     * @var EntityCollection|null
+     * @var BlogCategoryTranslationCollection|null
      */
     protected $translations;
 
     /**
-     * @var EntityCollection|null
+     * @var BlogCollection|null
      */
     protected $blogs;
 
@@ -65,22 +66,22 @@ class BlogCategoryEntity extends Entity
         $this->name = $name;
     }
 
-    public function getTranslations(): ?EntityCollection
+    public function getTranslations(): ?BlogCategoryTranslationCollection
     {
         return $this->translations;
     }
 
-    public function setTranslations(?EntityCollection $translations): void
+    public function setTranslations(?BlogCategoryTranslationCollection $translations): void
     {
         $this->translations = $translations;
     }
 
-    public function getBlogs(): ?EntityCollection
+    public function getBlogs(): ?BlogCollection
     {
         return $this->blogs;
     }
 
-    public function setBlogs(?EntityCollection $blogs): void
+    public function setBlogs(?BlogCollection $blogs): void
     {
         $this->blogs = $blogs;
     }

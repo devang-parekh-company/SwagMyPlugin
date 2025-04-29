@@ -6,6 +6,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 use Shopware\Core\Content\Product\ProductCollection;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityCollection;
+use BlogPlugin\Core\Content\BlogPlugin\Blog\Aggregate\BlogTranslationCollection;
 
 class BlogEntity extends Entity
 {
@@ -52,7 +53,7 @@ class BlogEntity extends Entity
     protected $blogCategories;
 
     /**
-     * @var EntityCollection|null
+     * @var BlogTranslationCollection|null
      */
     protected $translations;
 
@@ -136,7 +137,7 @@ class BlogEntity extends Entity
         return $this->products;
     }
 
-    public function setProducts(?ProductCollection $products): void
+    public function setProducts(ProductCollection $products): void
     {
         $this->products = $products;
     }
@@ -146,17 +147,17 @@ class BlogEntity extends Entity
         return $this->blogCategories;
     }
 
-    public function setBlogCategories(?EntityCollection $blogCategories): void
+    public function setBlogCategories(EntityCollection $blogCategories): void
     {
         $this->blogCategories = $blogCategories;
     }
 
-    public function getTranslations(): ?EntityCollection
+    public function getTranslations(): ?BlogTranslationCollection
     {
         return $this->translations;
     }
 
-    public function setTranslations(?EntityCollection $translations): void
+    public function setTranslations(BlogTranslationCollection $translations): void
     {
         $this->translations = $translations;
     }
