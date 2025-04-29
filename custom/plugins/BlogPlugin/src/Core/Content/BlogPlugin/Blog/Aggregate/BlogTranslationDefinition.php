@@ -37,8 +37,12 @@ class BlogTranslationDefinition extends  EntityTranslationDefinition
             (new StringField('author', 'author')),
         ]);
     }
-    // public function getEntityClass(): string
-    // {
-    //     return BlogTranslationEntity::class;
-    // }
+    public function getEntityClass(): string
+    {
+        return BlogTranslationEntity::class;
+    }
+    public function getCollectionClass(): string
+    {
+        return BlogTranslationCollection::class;
+    }
 }

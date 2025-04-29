@@ -57,4 +57,12 @@ class BlogDefinition extends EntityDefinition
             (new TranslationsAssociationField(BlogTranslationDefinition::class, 'blog_id'))
         ]);
     }
+    public function getCollectionClass(): string
+    {
+        return BlogCollection::class;
+    }
+    public function getEntityClass(): string
+    {
+        return BlogEntity::class;
+    }
 }
