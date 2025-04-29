@@ -5,7 +5,6 @@ namespace BlogPlugin\Core\Content\BlogPlugin\BlogCategory;
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityCollection;
-use Shopware\Core\Framework\DataAbstractionLayer\EntityCollection;
 
 class BlogCategoryEntity extends Entity
 {
@@ -106,7 +105,7 @@ class BlogCategoryEntity extends Entity
         $this->updatedAt = $updatedAt;
     }
 
-    public function getTranslated(): ?array
+    public function getTranslated(): array
     {
         return $this->translated;
     }
