@@ -1,0 +1,32 @@
+{
+  "sw-blog": {
+    "general": {
+      "mainMenuItemList": "Blog",
+      "mainMenuItemGeneral": "Blog",
+      "placeholderSearchBar": "Search Blog..."
+    },
+    "list": {
+      "textBlogOverview": "Blog",
+      "textTotalBlog": "No Blog | One Blog | {count} Blog",
+      "buttonAddBlog": "Add Blog",
+      "columnName": "Blog",
+      "columnLink": "Website"
+    },
+    "detail": {
+      "textHeadline": "New Blog",
+      "textMediaSelection": "Media selection",
+      "buttonSave": "Save",
+      "cardTitleBlogInfo": "Blog information",
+      "labelName": "Name",
+      "labelDescription": "Description",
+      "labelLink": "Website",
+      "placeholderName": "Enter Blog name...",
+      "placeholderDescription": "Enter description...",
+      "placeholderLink": "Enter Blog website...",
+      "messageSaveSuccess": "Blog \"{name}\" has been saved.",
+      "labelLogo": "Logo",
+      "labelUseAsLogo": "Use as Logo",
+      "errorTitle": "An error occurred"
+    }
+  }
+}

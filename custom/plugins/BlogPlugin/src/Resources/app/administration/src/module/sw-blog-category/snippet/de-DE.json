@@ -1,0 +1,38 @@
+{
+  "sw-blog-category": {
+    "general": {
+      "mainMenuItemList": "Blog category",
+      "mainMenuItemGeneral": "Blog category",
+      "placeholderSearchBar": "Durchsuche alle Blog category ..."
+    },
+    "list": {
+      "textBlogOverview": "Blog category",
+      "textTotalCategory": "Keine Blog category | Ein Blog category | {count} Blog category",
+      "buttonAddBlog": "Blog category anlegen",
+      "columnName": "Blog category",
+      "columnLink": "Webseite"
+    },
+    "detail": {
+      "textHeadline": "Neuer Blog category",
+      "textMediaSelection": "Medienauswahl",
+      "buttonSave": "Speichern",
+      "cardTitleBlogInfo": "Herstellerinformationen",
+      "labelName": "Name",
+      "labelDescription": "Beschreibung",
+      "labelLink": "Webseite",
+      "placeholderName": "Gib einen Herstellernamen ein ...",
+      "placeholderDescription": "Gib eine Herstellerbeschreibung ein ...",
+      "placeholderLink": "Gib die Herstellerwebseite ein ...",
+      "messageSaveSuccess": "Der Blog category \"{name}\" wurde erfolgreich gespeichert.",
+      "labelLogo": "Logo",
+      "labelUseAsLogo": "Als Logo nutzen"
+    }
+  },
+  "sw-privileges": {
+    "permissions": {
+      "product_BlogCategory": {
+        "label": "Blog category"
+      }
+    }
+  }
+}

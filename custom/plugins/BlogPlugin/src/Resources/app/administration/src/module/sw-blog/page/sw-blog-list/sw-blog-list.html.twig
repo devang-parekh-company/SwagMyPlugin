@@ -1,0 +1,23 @@
+{% block sw_blog_list %}
+	<sw-page class="sw-blog-list">
+		{% block sw_blog_list_smart_bar_actions %}
+			<template #smart-bar-actions>
+				<sw-button variant="primary" :routerlink="{ name: 'sw.blog.create' }">
+					<p>Create Blog</p>
+				</sw-button>
+			</template>
+		{% endblock %}
+		<template #content>
+            {% block sw_blog_list_content %}
+                <sw-entity-listing
+                    :items="blogs"
+                    :repository="repository"
+                    :showSelection="false"
+                    :columns="columns"
+                    detailRoute="sw.blog.detail"
+                >   
+                </sw-entity-listing>
+            {% endblock %}
+        </template>
+	</sw-page>
+{% endblock %}

@@ -1,0 +1,31 @@
+{
+  "sw-blog-category": {
+    "general": {
+      "mainMenuItemList": "Blog category",
+      "mainMenuItemGeneral": "Blog category",
+      "placeholderSearchBar": "Search Blog category..."
+    },
+    "list": {
+      "textBlogOverview": "Blog category",
+      "textTotalBlog": "No Blog category | One Blog category | {count} Blog category",
+      "buttonAddBlog": "Add Blog category",
+      "columnName": "Blog category",
+      "columnLink": "Website"
+    },
+    "detail": {
+      "textHeadline": "New Blog category",
+      "textMediaSelection": "Media selection",
+      "buttonSave": "Save",
+      "cardTitleBlogInfo": "Blog category information",
+      "labelName": "Name",
+      "labelDescription": "Description",
+      "labelLink": "Website",
+      "placeholderName": "Enter Blog category name...",
+      "placeholderDescription": "Enter description...",
+      "placeholderLink": "Enter Blog category website...",
+      "messageSaveSuccess": "Blog category \"{name}\" has been saved.",
+      "labelLogo": "Logo",
+      "labelUseAsLogo": "Use as Logo"
+    }
+  }
+}

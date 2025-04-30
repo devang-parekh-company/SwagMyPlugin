@@ -1,0 +1,20 @@
+{% block sw_blog_category_detail %}
+	<sw-page class="sw-blog-detail">
+		<template #smart-bar-actions>
+			<sw-button :routelink="{name: 'sw.blog.category.index'}">
+				Cancel
+			</sw-button>
+			<sw-button-process :isloading="isLoading" :processsuccess="processSuccess" variant="primary" @process-finish="saveFinish" @click="onClickSave">
+				Save
+			</sw-button-process>
+		</template>
+		<template #content>
+			<sw-card-view>
+				<sw-card v-if="blogCategory" :isloading="isLoading">
+					<sw-field v-model="blogCategory.name" :label="$tc('sw-blog-category.detail.labelName')"></sw-field>
+					<sw-text-field v-model="blogCategory.name" :label="$tc('sw-blog-category.detail.labelName')"></sw-text-field>
+				</sw-card>
+			</sw-card-view>
+		</template>
+	</sw-page>
+{% endblock %}
