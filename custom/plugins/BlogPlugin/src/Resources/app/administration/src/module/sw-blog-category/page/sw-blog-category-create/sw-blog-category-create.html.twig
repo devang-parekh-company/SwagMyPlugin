@@ -2,19 +2,18 @@
 	<sw-page class="sw-blog-create">
 		<template #smart-bar-actions>
 			<sw-button :routerLink="{name: 'sw.blog.category.index'}">
-				Cancel
+				{{$tc('sw-blog-category.general.cancel')}}
 			</sw-button>
 			<sw-button-process :isloading="isLoading" :processsuccess="processSuccess" variant="primary" @process-finish="saveFinish" @click="onClickSave">
-				Save
+				{{$tc('sw-blog-category.general.save')}}
 			</sw-button-process>
 		</template>
 		<template #content>
-            <sw-card-view>
-                <sw-card v-if="blogCategory" :isLoading="isLoading">
-                    <sw-field v-model="blogCategory.name" :label="$tc('sw-blog-category.detail.labelName')"></sw-field>                    
-                    <sw-text-field v-model="blogCategory.name" :label="$tc('sw-blog-category.detail.labelName')"></sw-text-field>                    
-                </sw-card>
-            </sw-card-view>
-        </template>
+			<sw-card-view>
+				<sw-card v-if="blogCategory">
+					<sw-text-field v-model:value="blogCategory.name" :placeholder="$tc('sw-blog-category.detail.placeholderName')" :label="$tc('sw-blog-category.detail.labelName')" name="name" validation="required" required/>
+				</sw-card>
+			</sw-card-view>
+		</template>
 	</sw-page>
 {% endblock %}

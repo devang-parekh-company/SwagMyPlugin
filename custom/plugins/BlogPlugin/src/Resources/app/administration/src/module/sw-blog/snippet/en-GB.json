@@ -3,14 +3,18 @@
     "general": {
       "mainMenuItemList": "Blog",
       "mainMenuItemGeneral": "Blog",
-      "placeholderSearchBar": "Search Blog..."
+      "somethingWentWrong": "something went wrong",
+      "cancel": "Cancel",
+      "save": "Save"
     },
     "list": {
-      "textBlogOverview": "Blog",
-      "textTotalBlog": "No Blog | One Blog | {count} Blog",
       "buttonAddBlog": "Add Blog",
-      "columnName": "Blog",
-      "columnLink": "Website"
+
+      "columnName": "Name",
+      "columnDescription": "Description",
+      "columnAuthor": "Author",
+      "columnReleaseDate": "ReleaseDate",
+      "columnActive": "Active"
     },
     "detail": {
       "textHeadline": "New Blog",
@@ -18,15 +22,19 @@
       "buttonSave": "Save",
       "cardTitleBlogInfo": "Blog information",
       "labelName": "Name",
+      "placeholderName": "Enter name...",
       "labelDescription": "Description",
-      "labelLink": "Website",
-      "placeholderName": "Enter Blog name...",
       "placeholderDescription": "Enter description...",
-      "placeholderLink": "Enter Blog website...",
-      "messageSaveSuccess": "Blog \"{name}\" has been saved.",
-      "labelLogo": "Logo",
-      "labelUseAsLogo": "Use as Logo",
-      "errorTitle": "An error occurred"
+      "labelAuthor": "Author",
+      "placeholderAuthor": "Enter author...",
+      "labelReleaseDate": "ReleaseDate",
+      "labelActive": "Active",
+      "labelBlogCategory": "Categories",
+      "placeholderBlogCategory": "Select categories",
+      "labelProduct": "Products",
+      "placeholderProduct": "Select products",
+      "titleSaveSuccess": "Success",
+      "messageSaveSuccess": "Blog \"{name}\" has been saved."
     }
   }
 }

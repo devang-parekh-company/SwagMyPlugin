@@ -32,7 +32,7 @@ class BlogTranslationDefinition extends  EntityTranslationDefinition
         return new FieldCollection([
             (new IdField('id', 'id'))->addFlags(new PrimaryKey(), new Required()),
             (new StringField('name', 'name')),
-            (new LongTextField('description', 'description')),
+            (new LongTextField('description', 'description')),// alwas add allowd Htmp flag.
             (new StringField('author', 'author')),
         ]);
     }

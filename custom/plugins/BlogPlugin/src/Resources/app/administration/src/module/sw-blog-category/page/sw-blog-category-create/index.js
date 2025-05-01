@@ -25,11 +25,15 @@ export default {
             name: "sw.blog.category.detail",
             params: { id: this.blogCategory.id },
           });
+          this.createNotificationSuccess({
+            title: this.$tc("sw-blog-category.detail.titleSaveSuccess"),
+            message: this.$tc("sw-blog-category.detail.messageSaveSuccess", 0, { name: this.blogCategory.name }),
+          });
         })
         .catch((exception) => {
           this.isLoading = false;
           this.createNotificationError({
-            title: this.$tc("sw-blog-category.detail.erroTitle"),
+            title: "sw-blog-category.general.somethingWentWrong",
             message: exception,
           });
         });

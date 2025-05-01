@@ -21,16 +21,6 @@ export default {
       title: this.$createTitle(),
     };
   },
-  computed: {
-    options() {
-      return [
-        {
-          value: "absolute",
-          label: "Absolute",
-        },
-      ];
-    },
-  },
   created() {
     this.createComponent();
   },
@@ -57,11 +47,11 @@ export default {
           this.processSuccess = true;
         })
         .catch((exception) => {
-            this.isLoading = false;
-            this.createNotificationError({
-                title: this.$tc('sw-blog-category.detail.errorTitle'),
-                message: exception
-            });
+          this.isLoading = false;
+          this.createNotificationError({
+            title: this.$tc("sw-blog-category.general.somethingWentWrong"),
+            message: exception,
+          });
         });
     },
     saveFinish() {

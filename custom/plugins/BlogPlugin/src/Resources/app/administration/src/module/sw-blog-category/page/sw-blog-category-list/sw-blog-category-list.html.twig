@@ -3,21 +3,16 @@
 		{% block sw_blog_category_list_smart_bar_actions %}
 			<template #smart-bar-actions>
 				<sw-button variant="primary" :routerLink="{ name: 'sw.blog.category.create' }">
-					<p>Create Blog Category</p>
+					<p>
+						{{$tc('sw-blog-category.list.buttonAddBlog')}}
+					</p>
 				</sw-button>
 			</template>
 		{% endblock %}
 		<template #content>
-            {% block sw_blog_category_list_content %}
-                <sw-entity-listing
-                    :items="blogCategory"
-                    :repository="repository"
-                    :showSelection="false"
-                    :columns="columns"
-                    detailRoute="sw.blog_category.detail"
-                >   
-                </sw-entity-listing>
-            {% endblock %}
-        </template>
+			{% block sw_blog_category_list_content %}
+				<sw-entity-listing :items="blogCategory" :repository="repository" :showselection="false" :columns="columns" :is-loading="isLoading" :allow-edit="true" :allow-inline-edit="true" :allow-delete="true"></sw-entity-listing>
+			{% endblock %}
+		</template>
 	</sw-page>
 {% endblock %}

@@ -10,6 +10,7 @@ export default {
     return {
       blogCategory: null,
       repository: null,
+      isLoading: false,
     };
   },
   metaInfo() {
@@ -27,23 +28,25 @@ export default {
   },
   methods: {
     createComponent() {
+      this.isLoading = true;
       this.repository = this.repositoryFactory.create("blog_category");
       this.repository
         .search(new Criteria(), Shopware.Context.api)
         .then((result) => {
-          this.blog = result;
+          this.blogCategory = result;
         });
+      this.isLoading = false;
     },
 
     getColumns() {
       return [
         {
           property: "name",
-          label: "Name",
-          routerLink: "sw.blog_category.detail",
+          label: "sw-blog-category.list.columnName",
+          routerLink: "sw.blog.category.detail",
+          inlineEdit: "string",
           allowResize: true,
           primary: true,
-          inlineEdit: "string",
         },
       ];
     },

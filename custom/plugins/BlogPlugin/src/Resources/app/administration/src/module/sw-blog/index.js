@@ -4,14 +4,19 @@ const { Module } = Shopware;
 Shopware.Component.register("sw-blog-list", () =>
   import("./page/sw-blog-list")
 );
+Shopware.Component.register("sw-blog-create", () =>
+  import("./page/sw-blog-create")
+);
+Shopware.Component.register("sw-blog-detail", () =>
+  import("./page/sw-blog-detail")
+);
 
 Module.register("sw-blog", {
   type: "plugin",
-  name: "Blog",
-  title: "Blog",
-  description: "Blog test",
+  name: "sw-blog.general.mainMenuItemGeneral",
+  title: "sw-blog.general.mainMenuItemGeneral",
+  description: "sw-blog.general.mainMenuItemGeneral",
   color: "#57D9A3",
-  icon: "default-shopping-paper-bag-product",
   snippets: {
     "de-DE": deDE,
     "en-GB": enGB,
@@ -22,36 +27,37 @@ Module.register("sw-blog", {
       path: "index",
       name: "sw.blog.index",
     },
-    // create: {
-    //     component: 'sw-blog-detail',
-    //     path: 'create',
-    //     name: "sw.blog.create",
+    create: {
+        component: 'sw-blog-create',
+        path: 'create',
+        name: "sw.blog.create",
 
-    //     meta: {
-    //         parentPath: 'sw.blog.index',
-    //         privilege: 'blog.creator',
-    //     },
-    // },
-    // detail: {
-    //     component: 'sw-blog-detail',
-    //     path: 'detail/:id',
-    //     meta: {
-    //         parentPath: 'sw.blog.index',
-    //         privilege: 'blog.viewer',
-    //     },
-    //     props: {
-    //         default(route) {
-    //             return {
-    //                 blogId: route.params.id,
-    //             };
-    //         },
-    //     },
-    // },
+        meta: {
+            parentPath: 'sw.blog.index',
+            privilege: 'blog.creator',
+        },
+    },
+    detail: {
+        component: 'sw-blog-detail',
+        path: 'detail/:id',
+        name: "sw.blog.detail",
+        meta: {
+            parentPath: 'sw.blog.index',
+            privilege: 'blog.viewer',
+        },
+        props: {
+            default(route) {
+                return {
+                    blogId: route.params.id,
+                };
+            },
+        },
+    },
   },
   navigation: [
     {
       path: "sw.blog.index",
-      label: "Blog",
+      label: "sw-blog.general.mainMenuItemList",
       id: "sw-blog",
       parent: "sw-catalogue",
       color: "#57D9A3",

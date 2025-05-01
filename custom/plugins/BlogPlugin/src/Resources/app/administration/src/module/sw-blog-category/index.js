@@ -13,9 +13,9 @@ Shopware.Component.register("sw-blog-category-detail", () =>
 
 Module.register("sw-blog-category", {
   type: "plugin",
-  name: "Blog Category",
-  title: "Blog Category",
-  description: "blog-category test",
+  name: "sw-blog-category.general.mainMenuItemGeneral",
+  title: "sw-blog-category.general.mainMenuItemGeneral",
+  description: "sw-blog-category.general.mainMenuItemGeneral",
   color: "#57D9A3",
   snippets: {
     "de-DE": deDE,
@@ -40,6 +40,7 @@ Module.register("sw-blog-category", {
     detail: {
         component: 'sw-blog-category-detail',
         path: 'detail/:id',
+        name: "sw.blog.category.detail",
         meta: {
             parentPath: 'sw.blog.category.index',
             privilege: 'blog-category.viewer',
@@ -56,7 +57,7 @@ Module.register("sw-blog-category", {
   navigation: [
     {
       path: "sw.blog.category.index",
-      label: "Blog Category",
+      label: "sw-blog-category.general.mainMenuItemList",
       id: "sw-blog-category",
       parent: "sw-catalogue",
       color: "#57D9A3",
