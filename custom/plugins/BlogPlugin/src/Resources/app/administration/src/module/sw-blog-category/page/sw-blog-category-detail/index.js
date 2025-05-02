@@ -77,9 +77,7 @@ export default {
         });
     },
     onClickSave() {
-      if (this.blogCategoryNameError) {
-        return;
-      }
+
       this.isLoading = true;
       this.repository
         .save(this.blogCategory)
