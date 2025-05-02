@@ -35,7 +35,13 @@
       "labelProduct": "Products",
       "placeholderProduct": "Select products",
       "titleSaveSuccess": "Success",
-      "messageSaveSuccess": "Blog \"{name}\" has been saved."
+      "messageSaveSuccess": "Blog \"{name}\" has been saved.",
+
+      "errorNameRequired" : "Name is required",
+      "errorDescriptionRequired" : "Description is required",
+      "errorAuthorRequired" : "Author is required",
+      "errorReleaseDateRequired" : "ReleaseDate is required"
+
     }
   }
 }

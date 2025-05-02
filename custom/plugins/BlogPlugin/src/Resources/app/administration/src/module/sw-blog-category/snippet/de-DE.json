@@ -18,7 +18,9 @@
       "labelLink": "Webseite",
       "placeholderName": "Blog-Kategorienamen eingeben...",
       "titleSaveSuccess": "Erfolgreich",
-      "messageSaveSuccess": "Blog-Kategorie \"{name}\" wurde gespeichert."
+      "messageSaveSuccess": "Blog-Kategorie \"{name}\" wurde gespeichert.",
+      "errorNameRequired" : "Name ist erforderlich"
+
     }
   }
 }

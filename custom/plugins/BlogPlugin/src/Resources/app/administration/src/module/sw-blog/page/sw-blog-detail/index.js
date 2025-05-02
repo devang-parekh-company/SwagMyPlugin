@@ -6,7 +6,11 @@ const { Criteria } = Shopware.Data;
 export default {
   template,
   inject: ["repositoryFactory"],
-  mixins: [Mixin.getByName("notification")],
+  mixins: [
+    Mixin.getByName("placeholder"),
+    Mixin.getByName("notification"),
+    Mixin.getByName("discard-detail-page-changes")("blogCategory"),
+  ],
 
   data() {
     return {
@@ -54,8 +58,8 @@ export default {
         this.getBlog();
         return;
       }
-      this.blog = this.blogRepository.create();
       Shopware.State.commit("context/resetLanguageToDefault");
+      this.blog = this.blogRepository.create();
     },
 
     getBlog() {
@@ -101,7 +105,7 @@ export default {
     onClickSave() {
       this.isLoading = true;
       this.blogRepository
-        .save(this.blog, Shopware.Context.api)
+        .save(this.blog)
         .then(() => {
           this.isLoading = false;
           this.processSuccess = true;

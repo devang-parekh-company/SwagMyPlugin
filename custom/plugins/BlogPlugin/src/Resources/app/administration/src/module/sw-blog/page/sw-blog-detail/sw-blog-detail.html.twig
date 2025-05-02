@@ -21,9 +21,9 @@
 		<template #content>
 			<sw-card-view>
 				<sw-card v-if="blog">
-					<sw-text-field v-model:value="blog.name" :placeholder="$tc('sw-blog.detail.placeholderName')" :label="$tc('sw-blog.detail.labelName')" name="name" validation="required" required/>
+					<sw-text-field v-model:value="blog.name" :placeholder="$tc('sw-blog.detail.placeholderName')" :label="$tc('sw-blog.detail.labelName')" name="name" validation="required" required :error="blogCategoryNameError"/>
 
-					<sw-textarea-field v-model:value="blog.description" :placeholder="$tc('sw-blog.detail.placeholderDescription')" :label="$tc('sw-blog.detail.labelDescription')" name="name" validation="required" required></sw-textarea-field>
+					<sw-textarea-field v-model:value="blog.description" :placeholder="$tc('sw-blog.detail.placeholderDescription')" :label="$tc('sw-blog.detail.labelDescription')" name="name" validation="required" required :error="blogCategoryDescriptionError"></sw-textarea-field>
 
 					<sw-entity-multi-select
 						:label="$tc('sw-blog.detail.labelBlogCategory')" 
@@ -42,9 +42,9 @@
 					</sw-entity-multi-select>
 
 					<sw-text-field
-					v-model:value="blog.author" :placeholder="$tc('sw-blog.detail.placeholderAuthor')" :label="$tc('sw-blog.detail.labelAuthor')" name="author" validation="required" required/>
+					v-model:value="blog.author" :placeholder="$tc('sw-blog.detail.placeholderAuthor')" :label="$tc('sw-blog.detail.labelAuthor')" name="author" validation="required" required :error="blogCategoryAuthorError"/>
 
-					<sw-datepicker v-model:value="blog.releaseDate" :label="$tc('sw-blog.detail.labelReleaseDate')" name="release_date" required></sw-datepicker>
+					<sw-datepicker v-model:value="blog.releaseDate" :label="$tc('sw-blog.detail.labelReleaseDate')" name="release_date" required :error="blogCategoryReleaseDateError"></sw-datepicker>
 
 					<sw-switch-field :label="$tc('sw-blog.detail.labelActive')" v-model:value="blog.active" name="active"/>
 

@@ -5,8 +5,14 @@ const { Criteria } = Shopware.Data;
 
 export default {
   template,
+  compatConfig: Shopware.compatConfig,
+
   inject: ["repositoryFactory"],
-  mixins: [Mixin.getByName("notification")],
+  mixins: [
+    Mixin.getByName("placeholder"),
+    Mixin.getByName("notification"),
+    Mixin.getByName("discard-detail-page-changes")("blogCategory"),
+  ],
 
   data() {
     return {
@@ -34,17 +40,17 @@ export default {
     },
   },
   created() {
-    this.createComponent();
+    this.createdComponent();
   },
   methods: {
-    createComponent() {
+    createdComponent() {
       this.repository = this.repositoryFactory.create("blog_category");
       if (this.blogCategoryId) {
         this.getCategory();
         return;
       }
-      this.blogCategory = this.repository.create();
       Shopware.State.commit("context/resetLanguageToDefault");
+      this.blogCategory = this.repository.create();
     },
     abortOnLanguageChange() {
       return this.blogRepository.hasChanges(this.blog);
@@ -60,16 +66,23 @@ export default {
       this.getCategory();
     },
     getCategory() {
+      const criteria = new Criteria();
+      criteria.addAssociation("translations");
+
       this.repository
-        .get(this.$route.params.id, Shopware.Context.api)
+        .get(this.blogCategoryId, Shopware.Context.api, criteria)
         .then((entity) => {
+          console.log("entity", entity);
           this.blogCategory = entity;
         });
     },
     onClickSave() {
+      if (this.blogCategoryNameError) {
+        return;
+      }
       this.isLoading = true;
       this.repository
-        .save(this.blogCategory, Shopware.Context.api)
+        .save(this.blogCategory)
         .then(() => {
           this.isLoading = false;
           this.processSuccess = true;

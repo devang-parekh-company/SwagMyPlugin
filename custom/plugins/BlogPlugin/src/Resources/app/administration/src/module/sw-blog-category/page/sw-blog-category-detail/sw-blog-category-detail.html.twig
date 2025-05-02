@@ -2,12 +2,7 @@
 	<sw-page class="sw-blog-detail">
 		{% block sw_product_list_language_switch %}
 			<template #language-switch>
-				<sw-language-switch
-					:disabled="blogCategoryId == null || undefined"
-					:save-changes-function="saveOnLanguageChange"
-					:abort-change-function="abortOnLanguageChange"
-					@on-change="onChangeLanguage"
-				/>
+				<sw-language-switch :disabled="blogCategoryId == null || undefined" :save-changes-function="saveOnLanguageChange" :abort-change-function="abortOnLanguageChange" @on-change="onChangeLanguage"/>
 			</template>
 		{% endblock %}
 		<template #smart-bar-actions>
@@ -20,8 +15,8 @@
 		</template>
 		<template #content>
 			<sw-card-view>
-				<sw-card v-if="blogCategory" :isloading="isLoading">
-					<sw-text-field v-model:value="blogCategory.name" :placeholder="$tc('sw-blog-category.detail.placeholderName')" :label="$tc('sw-blog-category.detail.labelName')" name="name" validation="required" required/>
+				<sw-card v-if="blogCategory">
+					<sw-text-field v-model:value="blogCategory.name" :placeholder="$tc('sw-blog-category.detail.placeholderName')" :label="$tc('sw-blog-category.detail.labelName')" name="name" validation="required" required :error="blogCategoryNameError"/>
 				</sw-card>
 			</sw-card-view>
 		</template>
