@@ -1,12 +1,41 @@
 {% block sw_blog_list %}
 	<sw-page class="sw-blog-list">
+
+		{% block sw_blog_list_search_bar %}
+			<template #search-bar>
+				<sw-search-bar initial-search-type="blog" :initial-search="term" @search="onSearch"/>
+			</template>
+		{% endblock %}
+
+		{% block sw_blog_list_smart_bar_header %}
+			<template #smart-bar-header>
+				{% block sw_blog_list_smart_bar_header_title %}
+					<h2>
+						{% block sw_blog_list_smart_bar_header_title_text %}
+							{{ $tc('sw-blog.general.mainMenuItemGeneral') }}
+						{% endblock %}
+
+						{% block sw_blog_list_smart_bar_header_amount %}
+							<span v-if="!isLoading" class="sw-page__smart-bar-amount">
+								({{ total }})
+							</span>
+						{% endblock %}
+					</h2>
+				{% endblock %}
+			</template>
+		{% endblock %}
 		{% block sw_blog_list_smart_bar_actions %}
 			<template #smart-bar-actions>
-				<sw-button variant="primary" :routerLink="{ name: 'sw.blog.create' }">
+				<sw-button variant="primary" :router-link="{ name: 'sw.blog.create' }">
 					<p>
 						{{$tc('sw-blog.list.buttonAddBlog')}}
 					</p>
 				</sw-button>
+			</template>
+		{% endblock %}
+		{% block sw_blog_list_language_switch %}
+			<template #language-switch>
+				<sw-language-switch @on-change="onChangeLanguage"/>
 			</template>
 		{% endblock %}
 		<template #content>

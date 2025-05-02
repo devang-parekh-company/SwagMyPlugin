@@ -1,24 +1,24 @@
 {
   "sw-blog-category": {
     "general": {
-      "mainMenuItemList": "Blog category",
-      "mainMenuItemGeneral": "Blog category",
-      "somethingWentWrong": "something went wrong",
-      "cancel": "Cancel",
-      "save": "Save"
+      "mainMenuItemList": "Blog-Kategorie",
+      "mainMenuItemGeneral": "Blog-Kategorie", 
+      "somethingWentWrong": "Etwas ist schief gelaufen",
+      "cancel": "Abbrechen",
+      "save": "Speichern"
     },
     "list": {
-      "buttonAddBlog": "Add Blog category",
+      "buttonAddBlog": "Blog-Kategorie hinzufügen",
       "columnName": "Name",
-      "columnLink": "Website"
+      "columnLink": "Webseite"
     },
     "detail": {
       "labelName": "Name",
-      "labelDescription": "Description",
-      "labelLink": "Website",
-      "placeholderName": "Enter Blog category name...",
-      "titleSaveSuccess" : "Success",
-      "messageSaveSuccess": "Blog category \"{name}\" has been saved."
+      "labelDescription": "Beschreibung",
+      "labelLink": "Webseite",
+      "placeholderName": "Blog-Kategorienamen eingeben...",
+      "titleSaveSuccess": "Erfolgreich",
+      "messageSaveSuccess": "Blog-Kategorie \"{name}\" wurde gespeichert."
     }
   }
 }

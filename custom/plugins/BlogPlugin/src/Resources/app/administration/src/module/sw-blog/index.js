@@ -4,9 +4,6 @@ const { Module } = Shopware;
 Shopware.Component.register("sw-blog-list", () =>
   import("./page/sw-blog-list")
 );
-Shopware.Component.register("sw-blog-create", () =>
-  import("./page/sw-blog-create")
-);
 Shopware.Component.register("sw-blog-detail", () =>
   import("./page/sw-blog-detail")
 );
@@ -28,9 +25,9 @@ Module.register("sw-blog", {
       name: "sw.blog.index",
     },
     create: {
-        component: 'sw-blog-create',
+        component: 'sw-blog-detail',
         path: 'create',
-        name: "sw.blog.create",
+        name: "sw.blog.detail",
 
         meta: {
             parentPath: 'sw.blog.index',

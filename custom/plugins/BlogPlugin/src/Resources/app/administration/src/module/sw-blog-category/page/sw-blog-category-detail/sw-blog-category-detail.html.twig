@@ -1,7 +1,17 @@
 {% block sw_blog_category_detail %}
 	<sw-page class="sw-blog-detail">
+		{% block sw_product_list_language_switch %}
+			<template #language-switch>
+				<sw-language-switch
+					:disabled="blogCategoryId == null || undefined"
+					:save-changes-function="saveOnLanguageChange"
+					:abort-change-function="abortOnLanguageChange"
+					@on-change="onChangeLanguage"
+				/>
+			</template>
+		{% endblock %}
 		<template #smart-bar-actions>
-			<sw-button :routerLink="{name: 'sw.blog.category.index'}">
+			<sw-button :router-link="{name: 'sw.blog.category.index'}">
 				{{$tc('sw-blog-category.general.cancel')}}
 			</sw-button>
 			<sw-button-process :isloading="isLoading" :processsuccess="processSuccess" variant="primary" @process-finish="saveFinish" @click="onClickSave">

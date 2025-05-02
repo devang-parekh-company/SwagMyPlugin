@@ -9,12 +9,13 @@
     },
     "list": {
       "buttonAddBlog": "Add Blog",
-
       "columnName": "Name",
       "columnDescription": "Description",
       "columnAuthor": "Author",
       "columnReleaseDate": "ReleaseDate",
-      "columnActive": "Active"
+      "columnActive": "Active",
+      "columnCategories": "Categories",
+      "columnProducts": "Products"
     },
     "detail": {
       "textHeadline": "New Blog",

@@ -2440,16 +2440,16 @@
         },
         {
             "name": "horstoeko/zugferd",
-            "version": "v1.0.113",
+            "version": "v1.0.114",
             "source": {
                 "type": "git",
                 "url": "https://github.com/horstoeko/zugferd.git",
-                "reference": "456bbfbb086e48dd28bef8b42cefbf1be6aa8af4"
+                "reference": "e7869f79b28056add87a82d405e9153711af4436"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/horstoeko/zugferd/zipball/456bbfbb086e48dd28bef8b42cefbf1be6aa8af4",
-                "reference": "456bbfbb086e48dd28bef8b42cefbf1be6aa8af4",
+                "url": "https://api.github.com/repos/horstoeko/zugferd/zipball/e7869f79b28056add87a82d405e9153711af4436",
+                "reference": "e7869f79b28056add87a82d405e9153711af4436",
                 "shasum": ""
             },
             "require": {
@@ -2508,9 +2508,9 @@
             ],
             "support": {
                 "issues": "https://github.com/horstoeko/zugferd/issues",
-                "source": "https://github.com/horstoeko/zugferd/tree/v1.0.113"
+                "source": "https://github.com/horstoeko/zugferd/tree/v1.0.114"
             },
-            "time": "2025-04-18T12:32:02+00:00"
+            "time": "2025-04-29T15:50:06+00:00"
         },
         {
             "name": "jms/metadata",
@@ -10911,12 +10911,12 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "composer-runtime-api": "^2.0"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }

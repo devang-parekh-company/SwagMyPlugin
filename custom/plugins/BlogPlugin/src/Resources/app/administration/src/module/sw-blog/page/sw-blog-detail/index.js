@@ -21,6 +21,18 @@ export default {
       blogCategoryOptions: null,
     };
   },
+  props: {
+    blogId: {
+      type: String,
+      required: false,
+      default: null,
+    },
+  },
+  watch: {
+    blogId() {
+      this.createdComponent();
+    },
+  },
   metaInfo() {
     return {
       title: this.$createTitle(),
@@ -32,15 +44,22 @@ export default {
   methods: {
     createdComponent() {
       this.blogRepository = this.repositoryFactory.create("blog");
-      this.blogCategoryRepository = this.repositoryFactory.create("blog_category");
+      this.blogCategoryRepository =
+        this.repositoryFactory.create("blog_category");
       this.productRepository = this.repositoryFactory.create("product");
-      this.getBlog();
       this.getBlogCategory();
       this.getProduct();
+
+      if (this.blogId) {
+        this.getBlog();
+        return;
+      }
+      this.blog = this.blogRepository.create();
+      Shopware.State.commit("context/resetLanguageToDefault");
     },
 
     getBlog() {
-      const criteria = new Criteria();      
+      const criteria = new Criteria();
       criteria.addAssociation("blogCategories");
       criteria.addAssociation("products");
 
@@ -56,26 +75,50 @@ export default {
         .then((result) => {
           this.blogCategoryOptions = result;
         });
-      },
+    },
     getProduct() {
       this.productRepository
         .search(new Criteria(), Shopware.Context.api)
         .then((result) => {
           this.product = result;
         });
-      },
+    },
+    abortOnLanguageChange() {
+      return this.blogRepository.hasChanges(this.blog);
+    },
+
+    saveOnLanguageChange() {
+      return this.onClickSave();
+    },
+
+    onChangeLanguage(languageId) {
+      this.isLoading = true;
+      Shopware.State.commit("context/setApiLanguageId", languageId);
+      this.getBlog();
+      this.getBlogCategory();
+      this.getProduct();
+    },
     onClickSave() {
       this.isLoading = true;
       this.blogRepository
         .save(this.blog, Shopware.Context.api)
         .then(() => {
-          this.getBlog();
           this.isLoading = false;
           this.processSuccess = true;
           this.createNotificationSuccess({
             title: this.$tc("sw-blog.detail.titleSaveSuccess"),
-            message: this.$tc("sw-blog.detail.messageSaveSuccess", 0, { name: this.blog.name }),
+            message: this.$tc("sw-blog.detail.messageSaveSuccess", 0, {
+              name: this.blog.name,
+            }),
           });
+          if (this.blogId === null) {
+            this.$router.push({
+              name: "sw.blog.detail",
+              params: { id: this.blog.id },
+            });
+            return;
+          }
+          this.getBlog();
         })
         .catch((exception) => {
           this.isLoading = false;

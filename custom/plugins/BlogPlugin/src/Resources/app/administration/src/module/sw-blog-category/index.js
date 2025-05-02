@@ -4,9 +4,7 @@ const { Module } = Shopware;
 Shopware.Component.register("sw-blog-category-list", () =>
   import("./page/sw-blog-category-list")
 );
-Shopware.Component.register("sw-blog-category-create", () =>
-  import("./page/sw-blog-category-create")
-);
+
 Shopware.Component.register("sw-blog-category-detail", () =>
   import("./page/sw-blog-category-detail")
 );
@@ -28,30 +26,29 @@ Module.register("sw-blog-category", {
       name: "sw.blog.category.index",
     },
     create: {
-        component: 'sw-blog-category-create',
-        path: 'create',
-        name: "sw.blog.category.create",
-
-        meta: {
-            parentPath: 'sw.blog.category.index',
-            privilege: 'blog-category.creator',
-        },
+      component: "sw-blog-category-detail",
+      path: "create",
+      name: "sw.blog.category.detail",
+      meta: {
+        parentPath: "sw.blog.category.index",
+        privilege: "blog-category.creator",
+      },
     },
     detail: {
-        component: 'sw-blog-category-detail',
-        path: 'detail/:id',
-        name: "sw.blog.category.detail",
-        meta: {
-            parentPath: 'sw.blog.category.index',
-            privilege: 'blog-category.viewer',
+      component: "sw-blog-category-detail",
+      path: "detail/:id",
+      name: "sw.blog.category.detail",
+      meta: {
+        parentPath: "sw.blog.category.index",
+        privilege: "blog-category.viewer",
+      },
+      props: {
+        default(route) {
+          return {
+            blogCategoryId: route.params.id,
+          };
         },
-        props: {
-            default(route) {
-                return {
-                    blogCategoryId: route.params.id,
-                };
-            },
-        },
+      },
     },
   },
   navigation: [

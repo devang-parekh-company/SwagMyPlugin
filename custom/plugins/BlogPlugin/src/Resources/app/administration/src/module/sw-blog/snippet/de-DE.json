@@ -3,34 +3,39 @@
     "general": {
       "mainMenuItemList": "Blog",
       "mainMenuItemGeneral": "Blog",
-      "somethingWentWrong": "something went wrong",
-      "cancel": "Cancel",
-      "save": "Save"
+      "somethingWentWrong": "Etwas ist schief gelaufen",
+      "cancel": "Abbrechen",
+      "save": "Speichern"
     },
     "list": {
-      "buttonAddBlog": "Add Blog",
+      "buttonAddBlog": "Blog hinzufügen",
       "columnName": "Name",
-      "columnDescription": "Description",
-      "columnAuthor": "Author",
-      "columnReleaseDate": "ReleaseDate",
-      "columnActive": "Active"
+      "columnDescription": "Beschreibung",
+      "columnAuthor": "Autor",
+      "columnReleaseDate": "Veröffentlichungsdatum",
+      "columnActive": "Aktiv",
+      "columnCategories": "Kategorien",
+      "columnProducts": "Produkte"
     },
     "detail": {
-      "textHeadline": "New Blog",
-      "textMediaSelection": "Media selection",
-      "buttonSave": "Save",
-      "cardTitleBlogInfo": "Blog information",
+      "textHeadline": "Neuer Blog",
+      "textMediaSelection": "Medienauswahl",
+      "buttonSave": "Speichern",
+      "cardTitleBlogInfo": "Blog-Informationen",
       "labelName": "Name",
-      "placeholderName": "Enter Blog name...",
-      "labelDescription": "Description",
-      "placeholderDescription": "Enter Blog description...",
-      "labelAuthor": "Author",
-      "placeholderAuthor": "Enter Blog author...",
-      "labelReleaseDate": "ReleaseDate",
-      "placeholderReleaseDate": "Enter Blog release date...",
-      "labelActive": "Active",
-      "titleSaveSuccess": "Success",
-      "messageSaveSuccess": "Blog \"{name}\" has been saved."
+      "placeholderName": "Name eingeben...",
+      "labelDescription": "Beschreibung",
+      "placeholderDescription": "Beschreibung eingeben...",
+      "labelAuthor": "Autor",
+      "placeholderAuthor": "Autor eingeben...",
+      "labelReleaseDate": "Veröffentlichungsdatum",
+      "labelActive": "Aktiv",
+      "labelBlogCategory": "Kategorien",
+      "placeholderBlogCategory": "Kategorien auswählen",
+      "labelProduct": "Produkte",
+      "placeholderProduct": "Produkte auswählen",
+      "titleSaveSuccess": "Erfolgreich",
+      "messageSaveSuccess": "Blog \"{name}\" wurde gespeichert."
     }
   }
 }

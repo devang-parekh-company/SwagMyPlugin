@@ -1,7 +1,17 @@
-{% block sw_blog_create %}
-	<sw-page class="sw-blog-create">
+{% block sw_blog_detail %}
+	<sw-page class="sw-blog-detail">
+		{% block sw_product_list_language_switch %}
+			<template #language-switch>
+				<sw-language-switch
+					:disabled="blogId == null || undefined"
+					:save-changes-function="saveOnLanguageChange"
+					:abort-change-function="abortOnLanguageChange"
+					@on-change="onChangeLanguage"
+				/>
+			</template>
+		{% endblock %}
 		<template #smart-bar-actions>
-			<sw-button :routerLink="{name: 'sw.blog.index'}">
+			<sw-button :router-link="{name: 'sw.blog.index'}">
 				{{$tc('sw-blog.general.cancel')}}
 			</sw-button>
 			<sw-button-process :isloading="isLoading" :processsuccess="processSuccess" variant="primary" @process-finish="saveFinish" @click="onClickSave">
@@ -14,13 +24,6 @@
 					<sw-text-field v-model:value="blog.name" :placeholder="$tc('sw-blog.detail.placeholderName')" :label="$tc('sw-blog.detail.labelName')" name="name" validation="required" required/>
 
 					<sw-textarea-field v-model:value="blog.description" :placeholder="$tc('sw-blog.detail.placeholderDescription')" :label="$tc('sw-blog.detail.labelDescription')" name="name" validation="required" required></sw-textarea-field>
-
-					<sw-text-field
-					v-model:value="blog.author" :placeholder="$tc('sw-blog.detail.placeholderAuthor')" :label="$tc('sw-blog.detail.labelAuthor')" name="author" validation="required" required/>
-
-					<sw-datepicker v-model:value="blog.releaseDate" :label="$tc('sw-blog.detail.labelReleaseDate')" name="release_date" required></sw-datepicker>
-
-					<sw-switch-field :label="$tc('sw-blog.detail.labelActive')" v-model:value="blog.active" name="active"/>
 
 					<sw-entity-multi-select
 						:label="$tc('sw-blog.detail.labelBlogCategory')" 
@@ -37,6 +40,13 @@
 						v-model:entityCollection="blog.products"
 						>
 					</sw-entity-multi-select>
+
+					<sw-text-field
+					v-model:value="blog.author" :placeholder="$tc('sw-blog.detail.placeholderAuthor')" :label="$tc('sw-blog.detail.labelAuthor')" name="author" validation="required" required/>
+
+					<sw-datepicker v-model:value="blog.releaseDate" :label="$tc('sw-blog.detail.labelReleaseDate')" name="release_date" required></sw-datepicker>
+
+					<sw-switch-field :label="$tc('sw-blog.detail.labelActive')" v-model:value="blog.active" name="active"/>
 
 				</sw-card>
 			</sw-card-view>

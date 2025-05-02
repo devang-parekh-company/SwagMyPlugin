@@ -11,6 +11,7 @@ export default {
       blogCategory: null,
       repository: null,
       isLoading: false,
+      total: 0,
     };
   },
   metaInfo() {
@@ -28,16 +29,27 @@ export default {
   },
   methods: {
     createComponent() {
-      this.isLoading = true;
       this.repository = this.repositoryFactory.create("blog_category");
-      this.repository
+      this.getList();
+    },
+    getList() {
+      this.isLoading = true;
+      return this.repository
         .search(new Criteria(), Shopware.Context.api)
         .then((result) => {
           this.blogCategory = result;
+          this.total = result.total;
+          this.isLoading = false;
+        })
+        .catch(() => {
+          this.isLoading = false;
         });
-      this.isLoading = false;
     },
 
+    onChangeLanguage(languageId) {
+      Shopware.State.commit("context/setApiLanguageId", languageId);
+      this.getList();
+    },
     getColumns() {
       return [
         {

@@ -11,6 +11,7 @@ export default {
       blog: null,
       repository: null,
       isLoading: false,
+      total: 0,
     };
   },
   metaInfo() {
@@ -30,19 +31,31 @@ export default {
     createComponent() {
       this.isLoading = true;
       this.repository = this.repositoryFactory.create("blog");
-      this.repository
+      this.getList();
+    },
+    getList() {
+      this.isLoading = true;
+      return this.repository
         .search(new Criteria(), Shopware.Context.api)
         .then((result) => {
           this.blog = result;
+          this.total = result.total;
+          this.isLoading = false;
+        })
+        .catch(() => {
+          this.isLoading = false;
         });
-      this.isLoading = false;
     },
-
+    onChangeLanguage(languageId) {
+      this.isLoading = true;
+      Shopware.State.commit('context/setApiLanguageId', languageId);
+      this.getList();
+    },
     getColumns() {
       return [
         {
-          property: "name",
-          label: this.$tc('sw-blog.list.columnName'),
+          property: "name", 
+          label: this.$tc("sw-blog.list.columnName"),
           routerLink: "sw.blog.detail",
           inlineEdit: "string",
           allowResize: true,
@@ -50,28 +63,31 @@ export default {
         },
         {
           property: "description",
-          label: this.$tc('sw-blog.list.columnDescription'),
+          label: this.$tc("sw-blog.list.columnDescription"), 
+          inlineEdit: "string",
           allowResize: true,
           primary: false,
         },
         {
           property: "author",
-          label: this.$tc('sw-blog.list.columnAuthor'),
+          label: this.$tc("sw-blog.list.columnAuthor"),
+          inlineEdit: "string", 
           allowResize: true,
           primary: false,
         },
         {
           property: "active",
-          label: this.$tc('sw-blog.list.columnActive'),
+          label: this.$tc("sw-blog.list.columnActive"),
+          inlineEdit: "boolean",
           allowResize: true,
           primary: false,
-        },
-        {
-          property: "releaseDate",
-          label: this.$tc('sw-blog.list.columnReleaseDate'),
-          allowResize: true,
-          primary: false,
-        },
+          align: "center",
+          dataIndex: "active",
+          format: (value) => {
+            return value ? "Active" : "Inactive";
+          },
+          cellComponent: "sw-boolean-badge",
+        }
       ];
     },
   },
