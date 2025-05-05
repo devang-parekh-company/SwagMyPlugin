@@ -1,8 +1,8 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 
 <container xmlns="http://symfony.com/schema/dic/services"
-           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
         <service id="BlogPlugin\Core\Content\BlogPlugin\Blog\BlogDefinition">
@@ -21,11 +21,12 @@
             <tag name="shopware.entity.definition" entity="blog_category"></tag>
         </service>
 
-        <service id="BlogPlugin\Core\Content\BlogPlugin\BlogCategory\Aggregate\BlogCategoryTranslationDefinition">
+        <service
+            id="BlogPlugin\Core\Content\BlogPlugin\BlogCategory\Aggregate\BlogCategoryTranslationDefinition">
             <tag name="shopware.entity.definition" entity="blog_category_translation"></tag>
         </service>
 
-    <service id="BlogPlugin\Core\Content\BlogPlugin\ProductMapping\BlogProductMappingDefinition">
+        <service id="BlogPlugin\Core\Content\BlogPlugin\ProductMapping\BlogProductMappingDefinition">
             <tag name="shopware.entity.definition" entity="blog_mapping_product"></tag>
         </service>
 
@@ -36,5 +37,17 @@
         <service id="BlogPlugin\Core\Content\Extension\LanguageExtension">
             <tag name="shopware.entity.extension"></tag>
         </service>
+
+        <service id="BlogPlugin\Controller\API\BlogController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+        </service>
+        <service id="BlogPlugin\Controller\StoreFront\BlogStoreFrontController" public="true">
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+        </service>
+
     </services>
 </container>

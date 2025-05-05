@@ -16,4 +16,7 @@ return [
     Shopware\Administration\Administration::class => ['all' => true],
     Shopware\Elasticsearch\Elasticsearch::class => ['all' => true],
     Shopware\Storefront\Storefront::class => ['all' => true],
+    Doctrine\Bundle\DoctrineBundle\DoctrineBundle::class => ['all' => true],
+    Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle::class => ['all' => true],
+    Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
 ];
