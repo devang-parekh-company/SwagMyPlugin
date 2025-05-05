@@ -29,7 +29,6 @@ class BlogCategoryTranslationDefinition extends  EntityTranslationDefinition
     public function defineFields(): FieldCollection
     {
         return new FieldCollection([
-            (new IdField('id', 'id'))->addFlags(new PrimaryKey(), new Required()),
             (new StringField('name', 'name')),
         ]);
     }

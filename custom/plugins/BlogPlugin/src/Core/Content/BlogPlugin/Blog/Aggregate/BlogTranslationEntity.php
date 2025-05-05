@@ -12,11 +12,6 @@ class BlogTranslationEntity extends Entity
     use EntityIdTrait;
 
     /**
-     * @var string
-     */
-    protected $id;
-
-    /**
      * @var string|null
      */
     protected $name;
@@ -32,7 +27,7 @@ class BlogTranslationEntity extends Entity
     protected $author;
 
     /**
-     * @var \DateTimeInterface|null
+     * @var \DateTimeInterface
      */
     protected $createdAt;
 
@@ -60,16 +55,6 @@ class BlogTranslationEntity extends Entity
      * @var LanguageEntity|null
      */
     protected $language;
-
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    public function setId(string $id): void
-    {
-        $this->id = $id;
-    }
 
     public function getName(): ?string
     {
@@ -101,12 +86,12 @@ class BlogTranslationEntity extends Entity
         $this->author = $author;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): \DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(?\DateTimeInterface $createdAt): void
+    public function setCreatedAt(\DateTimeInterface $createdAt): void
     {
         $this->createdAt = $createdAt;
     }

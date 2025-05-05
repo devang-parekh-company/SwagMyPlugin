@@ -4,7 +4,7 @@ namespace BlogPlugin\Core\Content\BlogPlugin\BlogCategory\Aggregate;
 
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
-use Shopware\Core\Framework\Struct\ArrayEntity;
+use BlogPlugin\Core\Content\BlogPlugin\BlogCategory\BlogCategoryEntity;
 use Shopware\Core\System\Language\LanguageEntity;
 
 class BlogCategoryTranslationEntity extends Entity
@@ -12,17 +12,12 @@ class BlogCategoryTranslationEntity extends Entity
     use EntityIdTrait;
 
     /**
-     * @var string
-     */
-    protected $id;
-
-    /**
      * @var string|null
      */
     protected $name;
 
     /**
-     * @var \DateTimeInterface|null
+     * @var \DateTimeInterface
      */
     protected $createdAt;
 
@@ -42,7 +37,7 @@ class BlogCategoryTranslationEntity extends Entity
     protected $languageId;
 
     /**
-     * @var ArrayEntity|null
+     * @var BlogCategoryEntity|null
      */
     protected $blogCategory;
 
@@ -50,16 +45,6 @@ class BlogCategoryTranslationEntity extends Entity
      * @var LanguageEntity|null
      */
     protected $language;
-
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    public function setId(string $id): void
-    {
-        $this->id = $id;
-    }
 
     public function getName(): ?string
     {
@@ -71,12 +56,12 @@ class BlogCategoryTranslationEntity extends Entity
         $this->name = $name;
     }
 
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): \DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(?\DateTimeInterface $createdAt): void
+    public function setCreatedAt(\DateTimeInterface $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -111,12 +96,12 @@ class BlogCategoryTranslationEntity extends Entity
         $this->languageId = $languageId;
     }
 
-    public function getBlogCategory(): ?ArrayEntity
+    public function getBlogCategory(): ?BlogCategoryEntity
     {
         return $this->blogCategory;
     }
 
-    public function setBlogCategory(?ArrayEntity $blogCategory): void
+    public function setBlogCategory(?BlogCategoryEntity $blogCategory): void
     {
         $this->blogCategory = $blogCategory;
     }

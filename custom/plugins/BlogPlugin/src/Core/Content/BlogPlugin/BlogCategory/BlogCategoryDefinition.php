@@ -24,19 +24,29 @@ class BlogCategoryDefinition extends EntityDefinition
         return self::ENTITY_NAME;
     }
 
+    public function getEntityClass(): string
+    {
+        return BlogCategoryEntity::class;
+    }
+
+    public function getCollectionClass(): string
+    {
+        return BlogCategoryCollection::class;
+    }
+
     public function defineFields(): FieldCollection
     {
         return new FieldCollection([
             (new IdField('id', 'id'))->addFlags(new PrimaryKey()),
             new TranslatedField('name', 'name'),
-            (new TranslationsAssociationField(BlogCategoryTranslationDefinition::class, 'blog_category_id')),
             new ManyToManyAssociationField(
                 'blogs',
                 BlogDefinition::class,
                 BlogCategoryMappingDefinition::class,
                 'blog_category_id',
                 'blog_id'
-            )
+            ),
+            (new TranslationsAssociationField(BlogCategoryTranslationDefinition::class, 'blog_category_id')),
         ]);
     }
 }

@@ -4,8 +4,8 @@ namespace BlogPlugin\Core\Content\BlogPlugin\BlogCategory;
 
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
-use BlogPlugin\Core\Content\BlogPlugin\BlogCategory\Aggregate\BlogCategoryTranslationCollection;
 use BlogPlugin\Core\Content\BlogPlugin\Blog\BlogCollection;
+use BlogPlugin\Core\Content\BlogPlugin\BlogCategory\Aggregate\BlogCategoryTranslationCollection;
 
 class BlogCategoryEntity extends Entity
 {
@@ -22,14 +22,14 @@ class BlogCategoryEntity extends Entity
     protected $name;
 
     /**
-     * @var BlogCategoryTranslationCollection|null
-     */
-    protected $translations;
-
-    /**
      * @var BlogCollection|null
      */
     protected $blogs;
+
+    /**
+     * @var BlogCategoryTranslationCollection|null
+     */
+    protected $translations;
 
     /**
      * @var \DateTimeInterface
@@ -66,16 +66,6 @@ class BlogCategoryEntity extends Entity
         $this->name = $name;
     }
 
-    public function getTranslations(): ?BlogCategoryTranslationCollection
-    {
-        return $this->translations;
-    }
-
-    public function setTranslations(?BlogCategoryTranslationCollection $translations): void
-    {
-        $this->translations = $translations;
-    }
-
     public function getBlogs(): ?BlogCollection
     {
         return $this->blogs;
@@ -84,6 +74,16 @@ class BlogCategoryEntity extends Entity
     public function setBlogs(?BlogCollection $blogs): void
     {
         $this->blogs = $blogs;
+    }
+
+    public function getTranslations(): ?BlogCategoryTranslationCollection
+    {
+        return $this->translations;
+    }
+
+    public function setTranslations(?BlogCategoryTranslationCollection $translations): void
+    {
+        $this->translations = $translations;
     }
 
     public function getCreatedAt(): \DateTimeInterface

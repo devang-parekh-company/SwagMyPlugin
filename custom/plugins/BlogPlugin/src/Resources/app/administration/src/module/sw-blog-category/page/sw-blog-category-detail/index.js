@@ -53,7 +53,7 @@ export default {
       this.blogCategory = this.repository.create();
     },
     abortOnLanguageChange() {
-      return this.blogRepository.hasChanges(this.blog);
+      return this.repository.hasChanges(this.blogCategory);
     },
 
     saveOnLanguageChange() {
@@ -66,6 +66,11 @@ export default {
       this.getCategory();
     },
     getCategory() {
+      Shopware.ExtensionAPI.publishData({
+        id: "sw-blog-category-detail__blog_category",
+        path: "blog-category",
+        scope: this,
+      });
       const criteria = new Criteria();
       criteria.addAssociation("translations");
 
