@@ -11,111 +11,183 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Shopware\Core\Framework\Context;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
+use Shopware\Core\Framework\Validation\DataBag\RequestDataBag;
+use Symfony\Component\HttpFoundation\Response;
 
-#[Route(defaults: ['_routeScope' => ['api']])]
+// Add API versioning prefix to routes
+#[Route(defaults: ['_routeScope' => ['api']], path: "/api")]
 class BlogController extends AbstractController
 {
-    #[Route(path: '/api/_action/blogs', name: 'api.custom.blog.list', methods: ['GET'])]
+    // Add return type declaration
+    #[Route(path: '/blogs', name: 'api.custom.blog.list', methods: ['GET'])]
     public function getBlogList(Context $context): JsonResponse
     {
-        $blogRepository = $this->container->get('blog.repository');
-        $criteria = new Criteria();
-        $criteria->setLimit(50);
-        $criteria->addAssociation('products');
-        $criteria->addAssociation('blogCategories');
-        $criteria->addAssociation('translations');
-        $criteria->addFilter(new EqualsFilter('active', true));
-        $result = $blogRepository->search($criteria, $context);
-        $blogs = $result->getEntities();
-        return new JsonResponse([
-            'success' => true,
-            'data' => $blogs,
-        ]);
+        try {
+            $blogRepository = $this->container->get('blog.repository');
+            $criteria = new Criteria();
+            $criteria->setLimit(50);
+            $criteria->addAssociation('products');
+            $criteria->addAssociation('blogCategories');
+            $criteria->addAssociation('translations');
+            $criteria->addFilter(new EqualsFilter('active', true));
+            $result = $blogRepository->search($criteria, $context);
+            $blogs = $result->getEntities();
+            return new JsonResponse([
+                'success' => true,
+                'data' => $blogs,
+            ]);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => false,
+                'message' => $e->getMessage()
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 
-    #[Route(path: '/api/_action/blogs/{id}', name: 'api.custom.blog.detail', methods: ['GET'])]
+    #[Route(path: '/blogs/{id}', name: 'api.custom.blog.detail', methods: ['GET'])]
     public function getBlog(string $id, Context $context): JsonResponse
     {
-        $blogRepository = $this->container->get('blog.repository');
-        $criteria = new Criteria();
-        $criteria->addFilter(new EqualsFilter('id', $id));
-        $criteria->addAssociation('products');
-        $criteria->addAssociation('blogCategories');
-        $criteria->addAssociation('translations');
-        $criteria->addFilter(new EqualsFilter('active', true));
-        $result = $blogRepository->search($criteria, $context);
-        $blog = $result->first();
+        try {
+            $blogRepository = $this->container->get('blog.repository');
+            $criteria = new Criteria();
+            $criteria->addFilter(new EqualsFilter('id', $id));
+            $criteria->addAssociation('products');
+            $criteria->addAssociation('blogCategories');
+            $criteria->addAssociation('translations');
+            $criteria->addFilter(new EqualsFilter('active', true));
+            $result = $blogRepository->search($criteria, $context);
+            $blog = $result->first();
 
-        return new JsonResponse([
-            'success' => true,
-            'data' => $blog,
-        ]);
+            if (!$blog) {
+                return new JsonResponse([
+                    'success' => false,
+                    'message' => 'Blog not found'
+                ], Response::HTTP_NOT_FOUND);
+            }
+
+            return new JsonResponse([
+                'success' => true,
+                'data' => $blog,
+            ]);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => false,
+                'message' => $e->getMessage()
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 
-    #[Route(path: '/api/_action/add-blog', name: 'api.custom.add-blog', methods: ['POST'])]
-    public function addBlog(Request $request, Context $context)
+    // Add return type and use RequestDataBag for validation
+    #[Route(path: '/blogs', name: 'api.custom.add-blog', methods: ['POST'])]
+    public function addBlog(Request $request, RequestDataBag $data, Context $context): JsonResponse
     {
-        // Example request body:
-        $blogRepository = $this->container->get('blog.repository');
-        $data = json_decode($request->getContent(), true);
+        try {
+            $blogRepository = $this->container->get('blog.repository');
+            $requestData = json_decode($request->getContent(), true);
 
-        // Wrap data in array to match expected format
-        $data = [$data];
-        $blogRepository->create($data, $context);
-        return new JsonResponse([
-            'success' => true,
-            'data' => $data[0],
-        ]);
+            // Add basic validation
+            if (empty($requestData)) {
+                return new JsonResponse([
+                    'success' => false,
+                    'message' => 'Invalid request data'
+                ], Response::HTTP_BAD_REQUEST);
+            }
+
+            $blogRepository->create([$requestData], $context);
+
+            return new JsonResponse([
+                'success' => true,
+                'data' => $requestData,
+                'message' => 'Blog created successfully'
+            ], Response::HTTP_CREATED);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => false,
+                'message' => $e->getMessage()
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 
-    #[Route(path: '/api/_action/blog-category', name: 'api.custom.blog-category.list', methods: ['GET'])]
+    #[Route(path: '/blog-categories', name: 'api.custom.blog-category.list', methods: ['GET'])]
     public function getBlogCategoryList(Context $context): JsonResponse
     {
-        $blogCategoryRepository = $this->container->get('blog_category.repository');
-        $criteria = new Criteria();
-        $criteria->addAssociation('blogs');
-        $criteria->addAssociation('translations');
-        $criteria->setLimit(50);
-        $result = $blogCategoryRepository->search($criteria, $context);
-        $blogCategory = $result->getEntities();
-        return new JsonResponse([
-            'success' => true,
-            'data' => $blogCategory,
-        ]);
+        try {
+            $blogCategoryRepository = $this->container->get('blog_category.repository');
+            $criteria = new Criteria();
+            $criteria->addAssociation('blogs');
+            $criteria->addAssociation('translations');
+            $criteria->setLimit(50);
+            $result = $blogCategoryRepository->search($criteria, $context);
+            $blogCategory = $result->getEntities();
+            return new JsonResponse([
+                'success' => true,
+                'data' => $blogCategory,
+            ]);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => false,
+                'message' => $e->getMessage()
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 
-    #[Route(path: '/api/_action/blog-category/{id}', name: 'api.custom.blog.detail', methods: ['GET'])]
+    #[Route(path: '/blog-categories/{id}', name: 'api.custom.blog-category.detail', methods: ['GET'])]
     public function getBlogCategory(string $id, Context $context): JsonResponse
     {
-        $blogCategoryRepository = $this->container->get('blog_category.repository');
-        $criteria = new Criteria();
-        $criteria->addFilter(new EqualsFilter('id', $id));
-        $criteria->addAssociation('blogs');
-        $criteria->addAssociation('translations');
-        $result = $blogCategoryRepository->search($criteria, $context);
-        $blogCategory = $result->first();
+        try {
+            $blogCategoryRepository = $this->container->get('blog_category.repository');
+            $criteria = new Criteria();
+            $criteria->addFilter(new EqualsFilter('id', $id));
+            $criteria->addAssociation('blogs');
+            $criteria->addAssociation('translations');
+            $result = $blogCategoryRepository->search($criteria, $context);
+            $blogCategory = $result->first();
 
-        return new JsonResponse([
-            'success' => true,
-            'data' => $blogCategory,
-        ]);
+            if (!$blogCategory) {
+                return new JsonResponse([
+                    'success' => false,
+                    'message' => 'Blog category not found'
+                ], Response::HTTP_NOT_FOUND);
+            }
+
+            return new JsonResponse([
+                'success' => true,
+                'data' => $blogCategory,
+            ]);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => false,
+                'message' => $e->getMessage()
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 
-
-    #[Route(path: '/api/_action/add-blog-category', name: 'api.custom.add-blog-category', methods: ['POST'])]
-    public function addBlogCategory(Request $request, Context $context)
+    #[Route(path: '/blog-categories', name: 'api.custom.add-blog-category', methods: ['POST'])]
+    public function addBlogCategory(Request $request, RequestDataBag $data, Context $context): JsonResponse
     {
-        // Example request body:
-        $blogCategoryRepository = $this->container->get('blog_category.repository');
-        $data = json_decode($request->getContent(), true);
+        try {
+            $blogCategoryRepository = $this->container->get('blog_category.repository');
+            $requestData = json_decode($request->getContent(), true);
 
-        // Wrap data in array to match expected format
-        $data = [$data];
+            if (empty($requestData)) {
+                return new JsonResponse([
+                    'success' => false,
+                    'message' => 'Invalid request data'
+                ], Response::HTTP_BAD_REQUEST);
+            }
 
-        $blogCategoryRepository->create($data, $context);
-        return new JsonResponse([
-            'success' => true,
-            'message' => 'created successfully',
-        ]);
+            $blogCategoryRepository->create([$requestData], $context);
+
+            return new JsonResponse([
+                'success' => true,
+                'data' => $requestData,
+                'message' => 'Blog category created successfully'
+            ], Response::HTTP_CREATED);
+        } catch (\Exception $e) {
+            return new JsonResponse([
+                'success' => false,
+                'message' => $e->getMessage()
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 }
